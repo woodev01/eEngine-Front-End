@@ -1,0 +1,11 @@
+<template>
+  <div class="game_board">
+    <table>
+      <tbody class="game_board_body">
+        <tr repeat.for="row of board">
+          <td repeat.for="cell of row"> ${ cell.state } </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</template>

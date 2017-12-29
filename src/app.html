@@ -1,0 +1,16 @@
+<template>
+  <h1>${title}</h1>
+  <br>
+
+  <compose view-model="board" view="./board.html" model.bind="{ height:7, width:9 }"></compose>
+
+  <div class="chat_box">
+    <div repeat.for="message of chat.messages"> ${message.message} (${message.timestamp}) </div> 
+    
+
+    <form submit.delegate="chat.sendMessage()">
+      <input type="text" value.bind="chat.currMessage">
+      <button type="submit">send</button>
+    </form>
+  </div>
+</template>
