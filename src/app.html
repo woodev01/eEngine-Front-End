@@ -1,15 +1,13 @@
 <template>
-  <h1>${title}</h1>
-  <br>
+  <!-- <compose view-model="board" view="./board.html" model.bind="{ height:9, width:9 }"></compose> -->
 
-  <compose view-model="board" view="./board.html" model.bind="{ height:7, width:9 }"></compose>
+  <h1 id="playgame_button" click.delegate="start_game($event)"> PLAY GAME </h1>
 
-  <div class="chat_box">
-    <div repeat.for="message of chat.messages"> ${message.message} (${message.timestamp}) </div> 
+  <div class="${ chat_open ? 'chat_box chat_box--in_view' : 'chat_box'}" >
+    <div repeat.for="message of chat.messages" show.bind="chat_open"> ${message.message} (${message.timestamp}) </div> 
     
-
     <form submit.delegate="chat.sendMessage()">
-      <input type="text" value.bind="chat.currMessage">
+      <input type="text" value.bind="chat.currMessage" focus.bind="chat_open">
       <button type="submit">send</button>
     </form>
   </div>
